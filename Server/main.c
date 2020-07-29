@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <arpa/inet.h>
 #include <sys/socket.h>
+#include<json-c/json.h>
 
-
-int main() {
+int main(int argc, char *argv[]) {
     /*
      *Cosntantes
      */
@@ -13,13 +13,30 @@ int main() {
     direccionServidor.sin_family = AF_INET;
     direccionServidor.sin_addr.s_addr = INADDR_ANY;
     direccionServidor.sin_port = htons(8080);
+
+    /*
+     * Json
+     */
+    char * string = "{ 'comando' : 'prueba de comando en json'}";
+    struct json_object *comd;
+    struct json_object *parsed_json;
+    parsed_json = json_tokener_parse(string);
+
+    json_object_object_get_ex(parsed_json, "comando", &comd);
+    //print para verificar el json
+    printf("Name: %s\n", json_object_get_string(comd));
+
+
+
     /*
      * Abre el servidor para escuchar en el puerto 8080
      */
     if (bind(servidor, (struct sockaddr *) &direccionServidor, sizeof(direccionServidor)) != 0) {
         perror("Falló el bind");
     }
-
+    /*
+     *El server queda a la espera de que le lleguén clientes
+     */
     printf("Estoy escuchando\n");
     listen(servidor, 100);
 
@@ -34,8 +51,9 @@ int main() {
         int cliente = accept(servidor, (struct sockaddr *)  &direccionCliente, &len);
 
         printf("Recibí una conexión en %d!!\n", cliente);
-        send(cliente, "Hola, desde el server!", 22, 0);
-        send(cliente, ":)\n", 4, 0);
+        send(cliente, "Comando: ", 24, 0);
+        send(cliente, json_object_get_string(comd), 26, 0);
+        send(cliente, "\n", 4, 0);
         //------------------------------
 
         char *buffer = (char *) malloc(5);
@@ -53,3 +71,4 @@ int main() {
 
     return 0;
 }
+

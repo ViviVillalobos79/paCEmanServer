@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/danium/Documents/TEC/Lenguajes/paCEmanServer/untitled/main.c
+/home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/main.c
 stdlib.h
 -
 stdio.h
@@ -14,5 +14,7 @@ stdio.h
 arpa/inet.h
 -
 sys/socket.h
+-
+json-c/json.h
 -
 

@@ -48,10 +48,10 @@ RM = /snap/clion/121/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/danium/Documents/TEC/Lenguajes/paCEmanServer/untitled
+CMAKE_SOURCE_DIR = /home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/danium/Documents/TEC/Lenguajes/paCEmanServer/untitled/cmake-build-debug
+CMAKE_BINARY_DIR = /home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/danium/Documents/TEC/Lenguajes/paCEmanServer/untitled/cmake-build-debug/CMakeFiles /home/danium/Documents/TEC/Lenguajes/paCEmanServer/untitled/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/cmake-build-debug/CMakeFiles /home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/danium/Documents/TEC/Lenguajes/paCEmanServer/untitled/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,44 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named untitled
+# Target rules for targets named Server
 
 # Build rule for target.
-untitled: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 untitled
-.PHONY : untitled
+Server: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Server
+.PHONY : Server
 
 # fast build rule for target.
-untitled/fast:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/build
-.PHONY : untitled/fast
+Server/fast:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/build
+.PHONY : Server/fast
+
+Json.o: Json.c.o
+
+.PHONY : Json.o
+
+# target to build an object file
+Json.c.o:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Json.c.o
+.PHONY : Json.c.o
+
+Json.i: Json.c.i
+
+.PHONY : Json.i
+
+# target to preprocess a source file
+Json.c.i:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Json.c.i
+.PHONY : Json.c.i
+
+Json.s: Json.c.s
+
+.PHONY : Json.s
+
+# target to generate assembly for a file
+Json.c.s:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Json.c.s
+.PHONY : Json.c.s
 
 main.o: main.c.o
 
@@ -129,7 +156,7 @@ main.o: main.c.o
 
 # target to build an object file
 main.c.o:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.c.o
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/main.c.o
 .PHONY : main.c.o
 
 main.i: main.c.i
@@ -138,7 +165,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.c.i
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -147,7 +174,7 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.c.s
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/main.c.s
 .PHONY : main.c.s
 
 # Help Target
@@ -158,7 +185,10 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... untitled"
+	@echo "... Server"
+	@echo "... Json.o"
+	@echo "... Json.i"
+	@echo "... Json.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

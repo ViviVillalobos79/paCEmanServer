@@ -1,1 +1,4 @@
-CMakeLists.txt not found in /home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server Select CMakeLists.txt file...
+/snap/clion/121/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/cmake-build-debug
