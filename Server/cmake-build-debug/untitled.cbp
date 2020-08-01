@@ -78,7 +78,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/Json.c">
+		<Unit filename="/home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/Server.c">
 			<Option target="Server"/>
 		</Unit>
 		<Unit filename="/home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/main.c">

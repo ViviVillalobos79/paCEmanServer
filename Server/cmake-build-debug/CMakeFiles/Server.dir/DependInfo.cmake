@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/Json.c" "/home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/cmake-build-debug/CMakeFiles/Server.dir/Json.c.o"
+  "/home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/Server.c" "/home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/cmake-build-debug/CMakeFiles/Server.dir/Server.c.o"
   "/home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/main.c" "/home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/cmake-build-debug/CMakeFiles/Server.dir/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

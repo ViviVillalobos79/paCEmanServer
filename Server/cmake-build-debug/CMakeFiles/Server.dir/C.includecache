@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+/home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/Server.c
+unistd.h
+-
+stdio.h
+-
+sys/socket.h
+-
+stdlib.h
+-
+netinet/in.h
+-
+string.h
+-
+
 /home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/main.c
 stdlib.h
 -

@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Server.dir/Json.c.o"
+  "CMakeFiles/Server.dir/Server.c.o"
   "CMakeFiles/Server.dir/main.c.o"
   "Server"
   "Server.pdb"

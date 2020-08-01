@@ -51,8 +51,6 @@ int main(int argc, char *argv[]) {
         int cliente = accept(servidor, (struct sockaddr *)  &direccionCliente, &len);
 
         printf("Recibí una conexión en %d!!\n", cliente);
-        send(cliente, "Comando: ", 24, 0);
-        send(cliente, json_object_get_string(comd), 26, 0);
         send(cliente, "\n", 4, 0);
         //------------------------------
 
@@ -71,4 +69,3 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-
