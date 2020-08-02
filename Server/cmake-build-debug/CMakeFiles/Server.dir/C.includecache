@@ -19,16 +19,6 @@ netinet/in.h
 -
 string.h
 -
-
-/home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/main.c
-stdlib.h
--
-stdio.h
--
-arpa/inet.h
--
-sys/socket.h
--
 json-c/json.h
 -
 

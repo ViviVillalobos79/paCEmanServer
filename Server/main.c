@@ -1,71 +1,119 @@
-#include <stdlib.h>
+#include <unistd.h>
 #include <stdio.h>
-#include <arpa/inet.h>
 #include <sys/socket.h>
+#include <stdlib.h>
+#include <netinet/in.h>
+#include <string.h>
 #include<json-c/json.h>
+#define PORT 8080
+#define TAM_MAXIMO 80
 
+char *jsonParser();
+
+void server();
+/*
+ * constantes del server
+ */
+int server_fd, new_socket, valread;
+struct sockaddr_in address;
+int opt = 1;
+int addrlen = sizeof(address);
+char buffer[1024] = {0};
+
+/*
+ * variables del juego
+ */
+int vidas = 2;
+/*
+ * Comandos
+ */
+char comando[TAM_MAXIMO];
 int main(int argc, char *argv[]) {
-    /*
-     *Cosntantes
-     */
-    struct sockaddr_in direccionServidor;
-    int servidor = socket(AF_INET, SOCK_STREAM, 0);
-    direccionServidor.sin_family = AF_INET;
-    direccionServidor.sin_addr.s_addr = INADDR_ANY;
-    direccionServidor.sin_port = htons(8080);
 
-    /*
-     * Json
-     */
-    char * string = "{ 'comando' : 'prueba de comando en json'}";
-    struct json_object *comd;
-    struct json_object *parsed_json;
-    parsed_json = json_tokener_parse(string);
+    printf("Ingrese un comando\n");
+    scanf("%[^\n]",comando);
 
-    json_object_object_get_ex(parsed_json, "comando", &comd);
-    //print para verificar el json
-    printf("Name: %s\n", json_object_get_string(comd));
+    printf("%s",comando);
+    server();
+}
 
 
+/*
+ * Mensaje Json
+ *Crea el mensaje json que se va a enviar a cliente
+ */
+char *jsonMsj() {
+    // se crea un objeto json
+    json_object * jobj = json_object_new_object();
 
-    /*
-     * Abre el servidor para escuchar en el puerto 8080
-     */
-    if (bind(servidor, (struct sockaddr *) &direccionServidor, sizeof(direccionServidor)) != 0) {
-        perror("Falló el bind");
-    }
-    /*
-     *El server queda a la espera de que le lleguén clientes
-     */
-    printf("Estoy escuchando\n");
-    listen(servidor, 100);
+    /*Se crea un json obj de tipo int*/
+    json_object *jint = json_object_new_int(vidas);
 
-    /*
-     *Queda abierta la conexcion para clientes en el loop
-     */
-    struct sockaddr_in direccionCliente;
-    unsigned int len;
+    json_object_object_add(jobj,"vidas", jint);
 
+    const char *jsonString = json_object_to_json_string(jobj);
 
-    while (1) {
-        int cliente = accept(servidor, (struct sockaddr *)  &direccionCliente, &len);
+    return (char *)jsonString;
 
-        printf("Recibí una conexión en %d!!\n", cliente);
-        send(cliente, "\n", 4, 0);
-        //------------------------------
+}
 
-        char *buffer = (char *) malloc(5);
-        int bytesRecibidos = recv(cliente, buffer, 1000, 0);
-        if (bytesRecibidos <= 0) {
-            perror("Se desconecto.");
-        }
-
-
-        buffer[bytesRecibidos] = '\0';
-        printf("Me llegaron %d bytes con %s\n", bytesRecibidos, buffer);
-        free(buffer);
+/*
+ * Server
+ * crea el server y espera la conexion del cliente para mandarle todos los datos
+ * en un mensaje json
+ */
+void server(){
+    // Desctriptor de socket
+    if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0)
+    {
+        perror("socket failed");
+        exit(EXIT_FAILURE);
     }
 
+    // Asignado puerto y paramatros
+    if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT,
+                   &opt, sizeof(opt)))
+    {
+        perror("setsockopt");
+        exit(EXIT_FAILURE);
+    }
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = INADDR_ANY;
+    address.sin_port = htons( PORT );
 
-    return 0;
+
+
+    printf("******************************Esperando conexion del cliente**********************************\n");
+    // Forcefully attaching socket to the port 8080
+    if (bind(server_fd, (struct sockaddr *)&address,
+             sizeof(address))<0)
+    {
+        perror("bind failed");
+        exit(EXIT_FAILURE);
+    }
+    if (listen(server_fd, 3) < 0)
+    {
+        perror("listen");
+        exit(EXIT_FAILURE);
+    }
+    if ((new_socket = accept(server_fd, (struct sockaddr *)&address,
+                             (socklen_t*)&addrlen))<0)
+    {
+        perror("accept");
+        exit(EXIT_FAILURE);
+    }
+
+
+    //Envio de mensaje al cliente
+    send(new_socket, jsonMsj(), strlen(jsonMsj()), 0);
+    send(new_socket, "\n", strlen("\n"), 0);
+
+    //Lectura del mensaje cliente
+    valread = recv(new_socket, buffer, 1024,0);
+
+    printf("%s\n", buffer);
+    printf("Comando enviado\n");
+
+    close(new_socket);
+    printf("******************************Conexion cerrada**************************************************\n");
 }
