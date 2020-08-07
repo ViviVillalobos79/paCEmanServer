@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6"/>
 	<Project>
-		<Option title="untitled"/>
+		<Option title="Untittle"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
 		<Option virtualFolders="CMake Files\;"/>
@@ -78,9 +78,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/Server.h">
-			<Option target="Server"/>
-		</Unit>
 		<Unit filename="/home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/main.c">
 			<Option target="Server"/>
 		</Unit>

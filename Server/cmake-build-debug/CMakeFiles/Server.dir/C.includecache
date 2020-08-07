@@ -6,7 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/Server.c
+/home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/Server.h
+
+/home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/main.c
 unistd.h
 -
 stdio.h
@@ -21,4 +23,6 @@ string.h
 -
 json-c/json.h
 -
+Server.h
+/home/danium/Documents/TEC/Lenguajes/paCEmanServer/Server/Server.h
 

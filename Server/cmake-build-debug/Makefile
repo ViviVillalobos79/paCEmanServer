@@ -143,33 +143,6 @@ Server/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/build
 .PHONY : Server/fast
 
-Server.o: Server.c.o
-
-.PHONY : Server.o
-
-# target to build an object file
-Server.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Server.c.o
-.PHONY : Server.c.o
-
-Server.i: Server.c.i
-
-.PHONY : Server.i
-
-# target to preprocess a source file
-Server.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Server.c.i
-.PHONY : Server.c.i
-
-Server.s: Server.c.s
-
-.PHONY : Server.s
-
-# target to generate assembly for a file
-Server.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Server.c.s
-.PHONY : Server.c.s
-
 main.o: main.c.o
 
 .PHONY : main.o
@@ -206,9 +179,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Server"
-	@echo "... Server.o"
-	@echo "... Server.i"
-	@echo "... Server.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
